@@ -15,7 +15,8 @@
 </head><body>
                 <font color="red" size="5"><strong><b> <?php echo $script_name ?> </b></strong></font><br>
                 <form action="<?php  echo $PHP_SELF; ?>">
-                         <input type="text" class="text" maxlength="99" name="word" placeholder="Word"><br><br>
+                         <b>At least Three words to search</b><br>
+                         <input type="text" class="text"  pattern=".{3,}" name="word" placeholder="Word"><br><br>
                          <input type="submit" name="submit" class="button" value="Submit">			
                 </form></center>
                        <center><font class="heading"><strong><font color="red" size="5"><a href="<?php echo $site_link?>" style="text-decoration:none">  <?php echo $site_name ?>  </a></font><br>
