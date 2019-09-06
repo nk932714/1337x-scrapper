@@ -14,7 +14,7 @@
 
 </head><body>
                 <font color="red" size="5"><strong><b> <?php echo $script_name ?> </b></strong></font><br>
-                <form action="<?php  echo $PHP_SELF; ?>">
+                <form action="?">
                          <b>At least Three words to search</b><br>
                          <input type="text" class="text"  pattern=".{3,}" name="word" placeholder="Word"><br><br>
                          <input type="submit" name="submit" class="button" value="Submit">			
@@ -26,15 +26,16 @@
 
 
  <?php 
-            $pagea  = $_GET["page"];
-            if (!empty($pagea)) { $page1 = $pagea; }
+            if (isset($_GET['page'])) { $pagea  = $_GET["page"];
+            if (!empty($pagea)) { $page1 = $pagea; } 
+            else{ $page1 = 1; } }
             else{ $page1 = 1; }
  
  ?>
   <!--for for showing search results -->
 <?php
 
-    $search  = $_GET["word"];
+    if (isset($_GET['word'])) { $search  = $_GET["word"];
     $url = "https://1337x.to/search/".$search."/".$page1."/";
     $raw = file_get_contents($url);
     //echo $raw;
@@ -50,6 +51,7 @@
     $result = preg_replace($re01, '', $result);
     $result = preg_replace($re02, '', $result);
     echo $result;
+    }
  ?>
     <!--for next page and backpage -->
 <?php $full_url = $_SERVER['REQUEST_URI']; $qurey_url = '?'.$_SERVER['QUERY_STRING']; $full_url1 = str_replace($qurey_url,'', $full_url); ?>
