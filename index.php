@@ -47,7 +47,7 @@
     //$result = str_replace('</tr>','</tr><br>',$matches[0][1]);
     $re01 = '/<i class="flaticon-message"><\/i>.*?<\/span>/m';
     $re02 = '/<span class="seeds">.*?<\/span>/m';
-    $result = str_replace('<a href="/torrent/','<a href="magnet_link.php?link=',$matches[0][1]);
+    $result = @str_replace('<a href="/torrent/','<a href="magnet_link.php?link=',$matches[0][1]);
     $result = preg_replace($re01, '', $result);
     $result = preg_replace($re02, '', $result);
     echo $result;
